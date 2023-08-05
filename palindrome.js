@@ -38,6 +38,19 @@ function ConvertDateToString(date)
     
 }
 
+function GetDateFormatsArray(date)
+{
+    var dateString = ConvertDateToString(date);
+    var ddmmyyyy = dateString.day + dateString.month + dateString.year;
+    var mmddyyyy = dateString.month + dateString.day + dateString.year;
+    var yyyymmdd = dateString.year + dateString.month + dateString.day;
+    var ddmmyy =dateString.day + dateString.month + dateString.year.slice(-2);
+    var mmddyy = dateString.month + dateString.day + dateString.year.slice(-2);
+    var yymmdd = dateString.year.slice(-2) + dateString.month + dateString.day;
+
+    return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
+}
+
 var date = 
 {
     day:5,
@@ -45,4 +58,4 @@ var date =
     year:2000
 }
 
-console.log(ConvertDateToString(date))
+console.log(GetDateFormatsArray(date))
