@@ -51,11 +51,27 @@ function GetDateFormatsArray(date)
     return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 }
 
-var date = 
+function CheckPalindrome(date)
 {
-    day:5,
-    month:6,
-    year:2000
+    var result = false;
+    var alldateformats = GetDateFormatsArray(date);
+
+    for(var i=0;i< alldateformats.length;i++)
+    {
+        if(isPalindrome(alldateformats[i]))
+        {
+            result =true;
+            break;
+        }
+    }
+    return result;
 }
 
-console.log(GetDateFormatsArray(date))
+var date = 
+{
+    day:11,
+    month:1,
+    year:2010
+}
+
+console.log(CheckPalindrome(date))
