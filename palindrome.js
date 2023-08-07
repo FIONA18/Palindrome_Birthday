@@ -66,12 +66,84 @@ function CheckPalindrome(date)
     }
     return result;
 }
+function IsLeapYear(year)
+{
+    if(year % 400 === 0)
+    {
+        return true;
+    }
+    if(year % 100 === 0)
+    {
+        return false;
+    }
+    if(year % 4 === 0)
+    {
+        return true;
+    }
+    return false;
+}
+function GetNextDate(date)
+{
+    var montharray = [31,28,31,30,31,30,31,31,30,31,30,31]
+    date.day = date.day+1;
+    var month = date.month;
+    var year = date.year;
+    if (month === 2)
+    {
+        if(IsLeapYear(year))
+        {
+            if(date.day > 29)
+            {
+                date.day = 1;
+                date.month = date.month+1;
+            }
+            
+        }
+        else
+        {
+            if(date.day > 28)
+            {
+                date.day = 1;
+                date.month = date.month+1;
+            }
+        }
+    }
+    else
+    {
+        if (date.day > montharray[month-1])
+        {
+                date.day = 1;
+                date.month = date.month+1;
+        }
+    }
+    
+    if (date.month > 12)
+    {
+        date.month = 1;
+        date.year= date.year +1;
+    }
+    return date;
+    
+}
 
 var date = 
 {
-    day:11,
-    month:1,
-    year:2010
+    day:31,
+    month:12,
+    year:2012
 }
 
-console.log(CheckPalindrome(date))
+/* console.log(GetNextDate(date))
+
+console.log(IsLeapYear(2000)); // true (divisible by 400)
+console.log(IsLeapYear(2020)); // true (divisible by 4 and not by 100)
+console.log(IsLeapYear(1900)); // false (divisible by 100 but not by 400)
+console.log(IsLeapYear(2022)); // false (not divisible by 4)
+
+// Testing GetNextDate function
+console.log(GetNextDate({ year: 2022, month: 2, day: 28 })); // { year: 2022, month: 3, day: 1 }
+console.log(GetNextDate({ year: 2020, month: 2, day: 28 })); // { year: 2020, month: 2, day: 29 }
+console.log(GetNextDate({ year: 2020, month: 12, day: 31 })); // { year: 2021, month: 1, day: 1 }
+console.log(GetNextDate({ year: 2021, month: 12, day: 31 })); // { year: 2022, month: 1, day: 1 }
+console.log(GetNextDate({ year: 2000, month: 2, day: 28 })); // { year: 2000, month: 2, day: 29 }
+console.log(GetNextDate({ year: 2000, month: 2, day: 29 })); // { year: 2000, month: 3, day: 1 } */
