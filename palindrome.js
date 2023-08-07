@@ -126,13 +126,38 @@ function GetNextDate(date)
     
 }
 
-var date = 
+function CheckPalindromeBirthday(date)
 {
-    day:31,
-    month:12,
-    year:2012
+    if (CheckPalindrome(date))
+    {
+        console.log("Yayyyyyyy. Your birthday is a palindrome")
+    }
+    else
+    {
+        var count = 0;
+        while(1)
+        {
+            count++;
+            date = GetNextDate(date);
+            if (CheckPalindrome(GetNextDate(date)))
+            {
+                console.log("You are unlucky by "+ count + " days");
+                console.log(date)
+                break;
+            }
+        }
+    }
 }
 
+var date = 
+{
+    day:2,
+    month:2,
+    year:2020
+}
+console.log(CheckPalindromeBirthday(date))
+
+//Testcases
 /* console.log(GetNextDate(date))
 
 console.log(IsLeapYear(2000)); // true (divisible by 400)
