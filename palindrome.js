@@ -126,6 +126,41 @@ function GetNextDate(date)
     
 }
 
+function GetPreviousDate(date)
+{
+    var montharray = [31,28,31,30,31,30,31,31,30,31,30,31]
+    if (IsLeapYear(date.year)) {
+        montharray[1] = 29;
+    }
+    date.day = date.day - 1;
+    var month = date.month;
+    var year = date.year;
+    if (month === 3)
+    {
+        if(date.day < 1)
+        {
+            date.day = montharray[1];
+            date.month = date.month-1;
+        }
+    }
+    else
+    {
+        if (date.day < 1)
+        {
+                date.month = date.month-1;
+                if (date.month < 1)
+                {
+                    date.month = 12;
+                    date.year= date.year - 1;
+                }
+                date.day = montharray[date.month-1];
+        }
+    }
+    
+   
+    return date;
+}
+
 function CheckPalindromeBirthday(date)
 {
     if (CheckPalindrome(date))
@@ -155,7 +190,7 @@ var date =
     month:2,
     year:2020
 }
-console.log(CheckPalindromeBirthday(date))
+//console.log(CheckPalindromeBirthday(date))
 
 //Testcases
 /* console.log(GetNextDate(date))
@@ -172,3 +207,31 @@ console.log(GetNextDate({ year: 2020, month: 12, day: 31 })); // { year: 2021, m
 console.log(GetNextDate({ year: 2021, month: 12, day: 31 })); // { year: 2022, month: 1, day: 1 }
 console.log(GetNextDate({ year: 2000, month: 2, day: 28 })); // { year: 2000, month: 2, day: 29 }
 console.log(GetNextDate({ year: 2000, month: 2, day: 29 })); // { year: 2000, month: 3, day: 1 } */
+
+
+// Test cases for GetPreviousDate function
+// var date1 = { year: 2024, month: 2, day: 1 };
+// console.log("Input:", date1);
+// console.log("Previous Date:", GetPreviousDate(date1));
+
+// // Regular year test
+// var date2 = { year: 2021, month: 1, day: 1 };
+// console.log("Input:", date2);
+// console.log("Previous Date:", GetPreviousDate(date2));
+
+// // End of a month test
+// var date3 = { year: 2023, month: 8, day: 1 };
+// console.log("Input:", date3);
+// console.log("Previous Date:", GetPreviousDate(date3));
+
+// // Beginning of a year test
+// var date4 = { year: 2023, month: 1, day: 1 };
+// console.log("Input:", date4);
+// console.log("Previous Date:", GetPreviousDate(date4));
+
+// // Beginning of a leap year test
+// var date5 = { year: 2024, month: 1, day: 1 };
+// console.log("Input:", date5);
+// console.log("Previous Date:", GetPreviousDate(date5));
+
+// console.log(GetPreviousDate({ year: 2021, month: 3, day: 1 }))
