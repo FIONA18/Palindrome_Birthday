@@ -160,6 +160,39 @@ function GetPreviousDate(date)
    
     return date;
 }
+function GetFuturePalindromeBday(date)
+{
+        let count = 0;
+        var currentdate = { day: date.day, month: date.month, year: date.year };
+        while(1)
+        {
+            count++;
+            currentdate = GetNextDate(currentdate);
+            if (CheckPalindrome(currentdate))
+            {
+                break;
+            }
+        }
+        return [ count, currentdate]
+}
+
+function GetPastPalindromBday(date)
+{
+    let count = 0;
+    var currentdate = { day: date.day, month: date.month, year: date.year };
+  
+        while(1)
+        {
+            count++;
+            currentdate = GetPreviousDate(currentdate);
+            if (CheckPalindrome(currentdate))
+            {
+                break;
+            }
+        }
+        return [ count, currentdate]
+        
+}
 
 function CheckPalindromeBirthday(date)
 {
@@ -169,26 +202,57 @@ function CheckPalindromeBirthday(date)
     }
     else
     {
-        var count = 0;
-        while(1)
+       
+        var FuturePalindromeBdayData = GetFuturePalindromeBday(date);
+        var PastPalindromBdayData = GetPastPalindromBday(date);
+        console.log(FuturePalindromeBdayData);
+        console.log(PastPalindromBdayData);
+        if (FuturePalindromeBdayData[0] < PastPalindromBdayData[0])
         {
-            count++;
-            date = GetNextDate(date);
-            if (CheckPalindrome(GetNextDate(date)))
-            {
-                console.log("You are unlucky by "+ count + " days");
-                console.log(date)
-                break;
-            }
+            console.log("You are unlucky by "+ FuturePalindromeBdayData[0] + " days");
+            console.log(FuturePalindromeBdayData[1])
+        }
+        else
+        {
+            console.log("You are unlucky by "+ PastPalindromBdayData[0] + " days");
+            console.log(PastPalindromBdayData[1])
         }
     }
 }
 
-var date = 
-{
-    day:2,
-    month:2,
-    year:2020
+// var date = 
+// {
+//     day:2,
+//     month:2,
+//     year:2020
+// }
+
+// var bday = 
+// {
+//     day:5,
+//     month:2,
+//     year:2020
+// }
+
+// CheckPalindromeBirthday(bday)
+
+var testCases = [
+    { day: 2, month: 2, year: 2020 }, // Leap year
+    { day: 11, month: 2, year: 2020 }, // Leap year
+    { day: 29, month: 2, year: 2020 }, // Leap year
+    { day: 31, month: 12, year: 2021 }, // Regular year
+    { day: 12, month: 1, year: 2022 }, // Regular year
+    { day: 10, month: 10, year: 2001 }, // Regular year
+    { day: 8, month: 8, year: 2010 }, // Regular year
+    { day: 9, month: 2, year: 2121 }, // Leap year
+];
+
+for (var i = 0; i < testCases.length; i++) {
+    console.log(`Testing case ${i + 1}:`);
+    var testCase = testCases[i];
+    console.log("Input:", testCase);
+    CheckPalindromeBirthday(testCase);
+    console.log("----------------------");
 }
 //console.log(CheckPalindromeBirthday(date))
 
