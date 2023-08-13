@@ -1,3 +1,9 @@
+const bdayInput = document.getElementById('birthday');
+const submitbtn = document.querySelector('#submit');
+console.log(submitbtn);
+submitbtn.addEventListener("click", OnSubmitClicked)
+const output = document.getElementById('output');
+
 function reverseString(str)
 {
     return str.split('').reverse().join('');
@@ -198,7 +204,7 @@ function CheckPalindromeBirthday(date)
 {
     if (CheckPalindrome(date))
     {
-        console.log("Yayyyyyyy. Your birthday is a palindrome")
+        output.innerHTML ='Yayyyyyyy. Your birthday is a palindrome';
     }
     else
     {
@@ -209,15 +215,29 @@ function CheckPalindromeBirthday(date)
         console.log(PastPalindromBdayData);
         if (FuturePalindromeBdayData[0] < PastPalindromBdayData[0])
         {
-            console.log("You are unlucky by "+ FuturePalindromeBdayData[0] + " days");
-            console.log(FuturePalindromeBdayData[1])
+            var futurePalindrome =  ConvertDateToString(FuturePalindromeBdayData[1]);
+            var outputString = 'You are unlucky by '+ FuturePalindromeBdayData[0] + ' days. The next palindrome date is '+ futurePalindrome.day +'-'+ futurePalindrome.month +'-' +futurePalindrome.year;
+            output.innerHTML = outputString;
         }
         else
         {
-            console.log("You are unlucky by "+ PastPalindromBdayData[0] + " days");
-            console.log(PastPalindromBdayData[1])
+            var pastPalindrome =  ConvertDateToString(PastPalindromBdayData[1]);
+            var outputString = 'You are unlucky by '+ PastPalindromBdayData[0] + ' days. The previous palindrome date was '+ pastPalindrome.day +'-'+ pastPalindrome.month +'-' +pastPalindrome.year;
+            output.innerHTML = outputString;
         }
     }
+}
+function OnSubmitClicked()
+{
+    console.log(birthday.value);
+    var birthdayList = birthday.value.split('-');
+    var bday =
+    {
+        day: Number(birthdayList[2]),
+        month: Number(birthdayList[1]),
+        year: Number(birthdayList[0]),
+    }
+    CheckPalindromeBirthday(bday)
 }
 
 // var date = 
@@ -236,24 +256,24 @@ function CheckPalindromeBirthday(date)
 
 // CheckPalindromeBirthday(bday)
 
-var testCases = [
-    { day: 2, month: 2, year: 2020 }, // Leap year
-    { day: 11, month: 2, year: 2020 }, // Leap year
-    { day: 29, month: 2, year: 2020 }, // Leap year
-    { day: 31, month: 12, year: 2021 }, // Regular year
-    { day: 12, month: 1, year: 2022 }, // Regular year
-    { day: 10, month: 10, year: 2001 }, // Regular year
-    { day: 8, month: 8, year: 2010 }, // Regular year
-    { day: 9, month: 2, year: 2121 }, // Leap year
-];
+// var testCases = [
+//     { day: 2, month: 2, year: 2020 }, // Leap year
+//     { day: 11, month: 2, year: 2020 }, // Leap year
+//     { day: 29, month: 2, year: 2020 }, // Leap year
+//     { day: 31, month: 12, year: 2021 }, // Regular year
+//     { day: 12, month: 1, year: 2022 }, // Regular year
+//     { day: 10, month: 10, year: 2001 }, // Regular year
+//     { day: 8, month: 8, year: 2010 }, // Regular year
+//     { day: 9, month: 2, year: 2121 }, // Leap year
+// ];
 
-for (var i = 0; i < testCases.length; i++) {
-    console.log(`Testing case ${i + 1}:`);
-    var testCase = testCases[i];
-    console.log("Input:", testCase);
-    CheckPalindromeBirthday(testCase);
-    console.log("----------------------");
-}
+// for (var i = 0; i < testCases.length; i++) {
+//     console.log(`Testing case ${i + 1}:`);
+//     var testCase = testCases[i];
+//     console.log("Input:", testCase);
+//     CheckPalindromeBirthday(testCase);
+//     console.log("----------------------");
+// }
 //console.log(CheckPalindromeBirthday(date))
 
 //Testcases
