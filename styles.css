@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap');
 :root
 {
-    --primary-color:#10b981;
+    --primary-color:#3b82f6;
     --dark-grey:#64748b;
     --off-white:#e2e8f0;
 }
@@ -9,6 +9,11 @@
 body{
     font-family: 'Montserrat', sans-serif;
     margin:0px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .container
 {
@@ -25,20 +30,21 @@ body{
 {
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem;
+    padding: 0.5rem;
     border-bottom-left-radius: 1rem;
 
 }
+
 #mainContent
 {
     margin: 1rem auto;
-    display:block;
     max-width: 500px;
     padding-left: 1rem;
     padding-right: 1rem;
+    flex: 1;
    
 }
-#mainContent h2, input, button, #output
+#mainContent p, input, button, #output
 {
     display: block;
     margin: auto;
@@ -50,6 +56,8 @@ body{
 #mainContent input
 {
     border-radius: 1rem;
+    font-size: larger;
+    
 }
 #submit
 {
@@ -62,4 +70,88 @@ body{
     border-color: var(--off-white);
     font-weight: bolder;
     font-family: inherit;
+}
+/* footer */
+.footer
+{
+    background-color: var(--primary-color);
+    padding: 1rem 0rem;
+    text-align: center;
+    color: white;
+    border-top-right-radius: 1rem;
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+.footer .link{
+color: white;
+}
+.footer ul{
+    padding-inline-start: 0px;
+}
+.hr-links
+{
+    margin-top: 1rem;
+}
+.footer .footer-heading
+{
+    font-weight: bold;
+    font-size: large;
+}
+.note
+{
+    max-width: 60%;
+    text-align:justify;
+    margin-left: 0.5rem;
+    margin-top: 0;
+    padding:0 1rem;
+    border-right: 2px solid white;
+    font-size:x-small
+    ;
+
+}
+ .profile
+{
+    margin-left: 0.5rem;
+    height: fit-content;
+    margin:auto;
+}
+.heading-center
+{
+    text-align: center;
+    
+}
+/* links */
+.link
+{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+.link-primary
+{
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    color: white;
+}
+.link-secondary
+{
+    color: var(--primary-color);
+    border-radius: 0.5rem;
+    border: 1px solid var(--primary-color)
+
+}
+/* lists */
+.list-non-bullet
+{
+    list-style: none;
+}
+.list-inline
+{
+    display: inline;
+    padding: 0;
+}
+.list-no-padding-inline-start
+{
+    padding-inline-start:0px;
 }

@@ -230,14 +230,22 @@ function CheckPalindromeBirthday(date)
 function OnSubmitClicked()
 {
     console.log(birthday.value);
-    var birthdayList = birthday.value.split('-');
-    var bday =
+    if(birthday.value.length > 0)
     {
-        day: Number(birthdayList[2]),
-        month: Number(birthdayList[1]),
-        year: Number(birthdayList[0]),
+        var birthdayList = birthday.value.split('-');
+        var bday =
+        {
+            day: Number(birthdayList[2]),
+            month: Number(birthdayList[1]),
+            year: Number(birthdayList[0]),
+        }
+        CheckPalindromeBirthday(bday)
     }
-    CheckPalindromeBirthday(bday)
+    else
+    {
+        output.innerHTML = "Please select valid date"
+    }
+   
 }
 
 // var date = 
