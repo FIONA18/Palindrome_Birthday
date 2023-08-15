@@ -1,2 +1,11 @@
 # Palindrome_Birthday
  
+This is a palindrome birthday checker that will also show the
+nearest palindrome date and how many days missed.
+
+problem statement
+Ask the user to input his/her birth date
+Check if the entered birthdate is a palindrome, if yes, show a message
+If the entered birthdate is not a palindrome:
+Find the nearest palindrome date
+Find how many days they missed
