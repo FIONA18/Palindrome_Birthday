@@ -1,6 +1,5 @@
 const bdayInput = document.getElementById('birthday');
 const submitbtn = document.querySelector('#submit');
-console.log(submitbtn);
 submitbtn.addEventListener("click", OnSubmitClicked)
 const output = document.getElementById('output');
 
@@ -61,7 +60,6 @@ function CheckPalindrome(date)
 {
     var result = false;
     var alldateformats = GetDateFormatsArray(date);
-
     for(var i=0;i< alldateformats.length;i++)
     {
         if(isPalindrome(alldateformats[i]))
